@@ -5,10 +5,10 @@ import java.io.*;
 public class ProbC {
 
     public static void main(String[] args) throws IOException {
-        problemA(System.in, System.out);
+        problemC(System.in, System.out);
     }
 
-    public static void problemA(InputStream in, OutputStream out) throws IOException {
+    public static void problemC(InputStream in, OutputStream out) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         PrintWriter writer = new PrintWriter(out);
 
