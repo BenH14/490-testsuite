@@ -20,4 +20,10 @@ class ProbATest {
         TestExecutor.runTest(ProbA::problemA, TIME_LIMIT, input, expectedOutput);
     }
 
+    @Test
+    public void runTestFiles() throws IOException {
+        String testfilesdir = System.getProperty("user.dir") + "/testfiles/assign2/a";
+        TestExecutor.runTestFiles(ProbA::problemA, TIME_LIMIT, testfilesdir);
+    }
+
 }
