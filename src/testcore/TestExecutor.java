@@ -1,12 +1,10 @@
 package testcore;
 
-import assign2.ProbA;
 import org.junit.jupiter.api.Assertions;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
 
 public class TestExecutor {
 
@@ -15,6 +13,7 @@ public class TestExecutor {
     }
 
     public static void runTest(Solution solution, long timeLimit, String input, String expected, String testname) {
+        System.out.println("Executing test " + (testname.length() > 0 ? testname : ""));
         InputStream instream = new ByteArrayInputStream(input.getBytes());
         OutputStream outputStream = new java.io.ByteArrayOutputStream();
 
@@ -33,7 +32,7 @@ public class TestExecutor {
         if (testname.length() > 0) {
             System.out.println("Test Name = " + testname);
         }
-        System.out.println(String.format("Completed in %dms", t));
+        System.out.println(String.format("PASS - Completed in %dms", t));
     }
 
     public static void runTestFiles(Solution solution, long timelimit, String dirpath) throws IOException {
