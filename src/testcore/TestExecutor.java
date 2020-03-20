@@ -27,8 +27,12 @@ public class TestExecutor {
 
         String result = outputStream.toString().trim();
 
+        // Fix newlines
+        result = result.replaceAll("\\r?\\n", System.lineSeparator());
+        expected = expected.replaceAll("\\r?\\n", System.lineSeparator());
+
         Assertions.assertEquals(expected.trim(), result, "Incorrect Output");
-        Assertions.assertTrue(t < timeLimit, "Time Limit Exceeded");
+        Assertions.assertTrue(t < timeLimit, String.format("Time Limit Exceeded t=%dms", t));
         if (testname.length() > 0) {
             System.out.println("Test Name = " + testname);
         }
@@ -39,6 +43,10 @@ public class TestExecutor {
         String indir = dirpath + "\\in";
         String outdir = dirpath + "\\std";
         File inputFiles = new File(indir);
+        if (!inputFiles.exists()) {
+            System.out.println("No Test files found");
+            return;
+        }
         for (String fname: inputFiles.list()) {
             var infile = Paths.get(indir + "\\" + fname);
             var outfile = Paths.get(outdir+ "\\" + fname.split("\\.")[0] + ".std");
